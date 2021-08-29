@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report>
+<TitlePage>
+Tutaj mam jakiś tekst i teraz BAM! <Title/> i dalej mamy tekst.
+</TitlePage>
+<TableOfContent>
+</TableOfContent>
+<FactorChapter>
+Chap.01: <FactorName/> - Anaris
+
+<ScenarioName/>
+
+Opis czynnika:
+<ScenarioDesc/>
+
+Opis składowej A:
+<AComponentDesc/>
+
+Opis składowej B:
+<BComponentDesc/>
+
+Opis składowej C:
+<CComponentDesc/>
+
+</FactorChapter>
+<Evaluation>
+</Evaluation>
+<Summary>
+</Summary>
+</report>

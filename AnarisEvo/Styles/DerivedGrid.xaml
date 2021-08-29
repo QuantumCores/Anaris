@@ -1,0 +1,55 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AnarisEvo.Styles"
+                    xmlns:conv="clr-namespace:AnarisEvo.Converter">
+
+    <Style TargetType="DataGridCell" x:Key="DerivedGrid">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsDBrow}" Value="True">
+                <Setter Property="Background" Value="LightGray"/>
+                <Setter Property="IsEnabled" Value="False"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="IsHitTestVisible" Value="True"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsARrow}" Value="True">
+                <Setter Property="IsEnabled" Value="False"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="DataGridCell" x:Key="SubDerivedGrid">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsDBrow}" Value="True">
+                <Setter Property="Background" Value="LightGray"/>
+                <Setter Property="IsEnabled" Value="False"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="IsHitTestVisible" Value="True"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsARrow}" Value="True">
+                <Setter Property="IsEnabled" Value="True"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <conv:DerivedGridConverter x:Key="derivedGridConverter" />
+    <Style TargetType="DataGridCell" x:Key="DerivedGridCCol">
+        <Style.Triggers>
+            <!--<DataTrigger Binding="{Binding IsDBrow}" Value="True">
+                <Setter Property="Background" Value="LightGray"/>
+                <Setter Property="IsEnabled" Value="False"/>
+            </DataTrigger>-->
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=ChildRows.Count, Converter={StaticResource derivedGridConverter}}" Value="True" />
+                    <Condition Binding="{Binding IsDBrow}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Background" Value="LightGray"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

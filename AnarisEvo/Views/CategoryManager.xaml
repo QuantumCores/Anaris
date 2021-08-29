@@ -1,0 +1,118 @@
+﻿<Window x:Class="AnarisEvo.Views.CategoryManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnarisEvo.Views"
+        xmlns:vm ="clr-namespace:AnarisEvo.ViewModels"
+        xmlns:cnv ="clr-namespace:AnarisEvo.Converter.CategoryManager"
+        xmlns:cat ="clr-namespace:AnarisDLL.BLL.Category;assembly=AnarisDLL"
+        xmlns:i ="clr-namespace:System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="Zarządzaj kategoriami" Height="450" Width="800" Style="{StaticResource DatabaseManager}">
+    <Window.DataContext>
+        <vm:CategoryManagerViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <cnv:CategoryToBoolConverter x:Key="CategoryToBoolConverter"></cnv:CategoryToBoolConverter>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="*" MinHeight="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="grb_AddCategory" Header="Dodaj nową kategorię / podkategorię" Grid.Column="0" Grid.Row="0" Margin="5,10,10,0" HorizontalAlignment="Stretch">
+            <Grid Name="grd_NewValue" Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" Name="col_NewCategory1"></ColumnDefinition>
+                    <ColumnDefinition Width="2*" Name="col_NewCategory2"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5*" Name="row_NewCategory3"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="lbl_Name" Content="Nazwa:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_Name" Text="{Binding NewCategory.text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  Height="23" Margin="0,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="{Binding ElementName=col_NewValue2, Path=Width}" />
+
+                <Label x:Name="lbl_Type" Content="Typ:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cmb_Type" ItemsSource="{Binding Path=CategoryTypes}" DisplayMemberPath="{Binding Path=Value}" SelectedValuePath="{Binding Path=Key}" SelectedItem="{Binding NewSelectedType, Mode=TwoWay}" Grid.Row="1" Grid.Column="1"  Height="23" Margin="0,5,0,0" Background="White" VerticalAlignment="Top" Width="{Binding ElementName=col_NewValue2, Path=Width}" >
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Value}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label x:Name="lbl_Parent" Content="Dodaj do:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <ComboBox x:Name="cmb_Parent" ItemsSource="{Binding Path=Categories}" SelectedValuePath="{Binding Path=name}" IsEnabled="{Binding Path=EnableParent, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1"  Height="23" Margin="0,5,0,0" Background="White" VerticalAlignment="Top" Width="{Binding ElementName=col_NewValue2, Path=Width}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=text}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label x:Name="lbl_DescriptionNew" Content="Opis:" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_DescriptionNew" Text="{Binding NewCategory.description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="3" Grid.Column="1"  Height="{Binding ElementName=row_NewValue3, Path=Height}" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,0" Width="{Binding ElementName=col_NewValue2, Path=Width}" />
+
+                <Button x:Name="btn_Add" Command="{Binding Path=AddNewCategoryCommand}"  CommandParameter="{Binding ElementName=cmb_Parent, Path=SelectedItem}" Content="Dodaj" Grid.Row="4" Grid.Column="1" Margin="0 2 0 2" Style="{StaticResource DefaultButton}"></Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grb_EditCategory" Header="Edytuj kategorię / podkategorię" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Margin="5,10,10,0" HorizontalAlignment="Stretch">
+            <Grid Name="grd_EditCategory" Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" Name="col_EditCategory1"></ColumnDefinition>
+                    <ColumnDefinition Width="*" Name="col_EditCategory2"></ColumnDefinition>
+                    <ColumnDefinition Width="2*" Name="col_EditCategory3"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5*" Name="row_EditCategory3"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--<ListView Name="lst_Categories" ItemsSource="{Binding Categories}" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" SelectionChanged="lst_Categories_SelectionChanged">
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn Header="Kategoria i podkategoria" DisplayMemberBinding="{Binding text}" Width="250"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>-->
+
+                <TreeView Name="trvFamilies" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" SelectedItemChanged="lst_Categories_SelectionChanged" ItemsSource="{Binding Categories}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding subCategories}">
+                            <TextBlock Foreground="Black" FontWeight="Bold"  Text="{Binding text}" />
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding text}"/>
+                                </DataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+
+
+                <Button x:Name="btn_Remove" Content="Usuń" Grid.Row="3" Grid.Column="0" Margin="0 2 0 2" HorizontalAlignment="Right" Command="{Binding DeleteCommand}" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}" Click="btn_Remove_Click" Style="{StaticResource DefaultButton}"></Button>
+
+                <Label x:Name="lbl_NameEdit" Content="Nazwa:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_NameEdit"  Grid.Row="0" Grid.Column="2"  Height="23" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding EditedCategory.text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="{Binding ElementName=col_EditCategory3, Path=Width}" />
+
+                <Label x:Name="lbl_DescriptionEdit" Content="Opis:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_DescriptionEdit" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Height="{Binding ElementName=row_NewCategory3, Path=Height}" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,0" Text="{Binding EditedCategory.description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Button x:Name="btn_Edit" Content="Zmień" Grid.Row="3" Grid.Column="2" Margin="0 2 0 2" Command="{Binding EditCategoryCommand}" Style="{StaticResource DefaultButton}"/>
+            </Grid>
+        </GroupBox>
+        <Button Name="btn_Apply" Content="Zastosuj" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right" Margin="0,5,15,4" Command="{Binding ApplyCommand}" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}"  Style="{StaticResource DatabaseButton}"/>
+        <Button Name="btn_Cancel" Content="Anuluj" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  Margin="0,5,15,4" Command="{Binding CancelCommand}" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}"  Style="{StaticResource DefaultButton}"/>
+    </Grid>
+</Window>

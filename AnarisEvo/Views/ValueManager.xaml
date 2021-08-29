@@ -1,0 +1,98 @@
+﻿<Window x:Class="AnarisEvo.Views.ValueManager"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnarisEvo.Views"
+        xmlns:vm="clr-namespace:AnarisEvo.ViewModels"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Title="Zarządzaj wartościami" Height="600" Width="700" Style="{StaticResource DatabaseManager}">
+    <!--<Window.DataContext>
+        <vm:ValueManagerViewModel/>
+    </Window.DataContext>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="7*"></RowDefinition>
+            <RowDefinition Height="3.5*"></RowDefinition>
+            <RowDefinition Height="*" MinHeight="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox x:Name="grb_AddValue" Header="Dodaj nową wartość" Grid.Column="0" Grid.Row="0" Margin="5,10,10,0" HorizontalAlignment="Stretch">
+            <Grid Name="grd_NewValue" Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" Name="col_NewValue1"></ColumnDefinition>
+                    <ColumnDefinition Width="2*" Name="col_NewValue2"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5*" Name="row_NewValue3"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="lbl_Name" Content="Nazwa:" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_Name" Grid.Row="0" Grid.Column="1"  Height="23" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Path=NewValue.text, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="{Binding ElementName=col_NewValue2, Path=Width}" />
+
+                <Label x:Name="lbl_Value" Content="Wartość:" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_Value" Grid.Row="1" Grid.Column="1"  Height="23" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Path=NewValue.value,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="{Binding ElementName=col_NewValue2, Path=Width}" />
+
+                <Label x:Name="lbl_DescriptionNew" Content="Opis:" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_DescriptionNew" Grid.Row="2" Grid.Column="1"  Height="{Binding ElementName=row_NewValue3, Path=Height}" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,0" Text="{Binding Path=NewValue.description,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Width="{Binding ElementName=col_NewValue2, Path=Width}" />
+
+                <Button x:Name="btn_Add" Content="Dodaj" Command="{Binding AddNewValueCommand}" Grid.Row="3" Grid.Column="1" Margin="0 2 0 2" ></Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grb_EditValue" Header="Edytuj wartość" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Margin="5,10,10,0" HorizontalAlignment="Stretch">
+            <Grid Name="grd_EditValue" Margin="0,10,0,0" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" Name="col_EditValue1"></ColumnDefinition>
+                    <ColumnDefinition Width="*" Name="col_EditValue2"></ColumnDefinition>
+                    <ColumnDefinition Width="2*" Name="col_EditValue3"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5*" Name="row_EditValue3"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListView Name="lst_Values" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" ItemsSource="{Binding Path=Values}" SelectionChanged="lst_Values_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding text}" Width="80"/>
+                            <GridViewColumn Header="Wartość" DisplayMemberBinding="{Binding value}" Width="120"/>                            
+                        </GridView>                        
+                    </ListView.View>
+                </ListView>
+
+                <Button x:Name="btn_Remove" Content="Usuń" Grid.Row="3" Grid.Column="0" Margin="0 2 0 2" HorizontalAlignment="Right" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}" Command="{Binding DeleteCommand}"></Button>
+
+                <Label x:Name="lbl_NameEdit" Content="Nazwa:" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_NameEdit" Grid.Row="0" Grid.Column="2"  Height="23" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Path=EditedValue.text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="{Binding ElementName=col_EditValue3, Path=Width}" />
+
+                <Label x:Name="lbl_ValueEdit" Content="Wartość:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_ValueEdit" Grid.Row="1" Grid.Column="2"  Height="23" Margin="0,5,0,0" TextWrapping="Wrap" Text="{Binding Path=EditedValue.value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="{Binding ElementName=col_EditValue3, Path=Width}" />
+
+                <Label x:Name="lbl_DescriptionEdit" Content="Opis:" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <TextBox x:Name="txt_DescriptionEdit" Grid.Row="2" Grid.Column="2"  Height="{Binding ElementName=row_NewValue3, Path=Height}" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,5,0,0" Text="{Binding Path=EditedValue.description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Button x:Name="btn_Edit" Content="Zmień" Grid.Row="3" Grid.Column="2" Margin="0 2 0 2" Command="{Binding EditValueCommand}" />
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grb_EditDescription" Header="Ogólny opis wartości" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Margin="5,10,10,0"  HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5.5*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Name="txt_MainDescription" Text="{Binding Path=ValuesDescription,  UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="0" Margin="2 4 2 2" TextWrapping="Wrap"></TextBox>
+                <Button Name="btn_MainEdit" Content="Zmień" Grid.Row="1" Margin="2 0 0 2" HorizontalAlignment="Right" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}"  Height="{Binding ElementName=btn_Edit, Path=ActualHeight}"></Button>
+            </Grid>
+        </GroupBox>
+        <Button Name="btn_Apply" Content="Zastosuj" Grid.Row="2" Grid.Column="2"  HorizontalAlignment="Right" Margin="0,5,15,4" Command="{Binding ApplyCommand}" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}"   Style="{StaticResource DatabaseButton}"/>
+        <Button Name="btn_Cancel" Content="Anuluj" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  Margin="0,5,15,4" Command="{Binding CancelCommand}" Width="{Binding ElementName=btn_Edit, Path=ActualWidth}"  Style="{StaticResource DefaultButton}"/>
+    </Grid>
+</Window>

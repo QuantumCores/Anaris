@@ -1,0 +1,74 @@
+﻿<Window x:Class="AnarisEvo.Views.GeneralInformation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnarisEvo.Views"
+        mc:Ignorable="d"
+        Title="Pomoc" Height="750" Width="1200" Style="{StaticResource ManagerWindow}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Margin="2 5 2 5" Header="Informacje o programie">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3.5*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.ColumnSpan="2" Margin="0,0,0,0" >
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Margin="5 5 5 0" Padding="10 10 10 10" TextWrapping="Wrap" TextAlignment="Justify" Foreground="Black" >
+                    Metoda zarządzania ryzykiem w muzeach pozwala na optymalne podejmowanie decyzji z zakresu prewencji konserwatorskiej i najbardziej
+                    efektywne wykorzystanie środków na ochronę zbiorów przez nadanie priorytetu największym zagrożeniom. Podstawą tych działań są szczegółowe 
+                    scenariusze ryzyka dla poszczególnych obszarów kolekcji. Najważniejszym etapem procesu jest analiza ryzyka, kiedy każdemu scenariuszowi zagrożeń
+                    przypisuje się wartości liczowe pozawalające na obliczanie wielkości ryzyka. Istotnym elementem zarządzania ryzykiem jest również określenie 
+                    wartości wartości zasobu dziedzictwa będącego przedmiotem analizy. Program Anaris pozwala na stworzenie bazy danych dotyczącej samych zbiorów, 
+                    wprowadzanie różnych czynników zagrożenia oraz zbudowanie scenariuszy ryzyka. Program wykonuje automatycznie wszystkie niezbędne obliczenia, 
+                    umożliwia ich porównanie w formie wykresów i tabel oraz tworzenie raportów.
+                    </TextBlock>
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Margin="5 0 5 0" Padding="10 10 10 10" TextWrapping="Wrap" TextAlignment="Justify" Foreground="Black">
+                    Muzeum Narodowe w Krakowie od 2012 roku prowadzi projekt dotyczący metodyki oceny ryzyka dla swoich zbiorów. W jego ramach powstały założenia
+                    merytoryczne i koncepcja programu Anaris. Dzięki środkom Ministra Kultury i Dziedzictwa Narodowego przekazanym na realizację projektu Krajowemu 
+                    Centrum Badań nad dziedzictwem program możemu udostępnić wszystkim instytucjom kultury w Polsce.
+                    </TextBlock>
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Margin="5 0 5 0" Padding="10 10 10 10" TextWrapping="Wrap" TextAlignment="Justify" Foreground="Black">
+                    Założenia merytoryczne i koncepcja programu: Barbara Świątkowska <LineBreak/>
+                    Opracowanie programu: Artur Działo
+                    </TextBlock>
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Margin="5 0 0 0" Padding="10 10 10 10" TextWrapping="Wrap" TextAlignment="Justify" Foreground="Black">
+                    Dalsze informacje o metodyce zarządzania ryzykiem w obszarze dziedzictwa kulturowego: <LineBreak/>
+                    Muzeum Narodowe w Krakowie<LineBreak/>
+                    Laboratorim Analiz Nieniszczących Badań Obiektów Zabutkowych<LineBreak/>
+                    ul. Piłsudskiego 14<LineBreak/>
+                    31-109 Kraków <LineBreak/>
+                    tel. 4335824<LineBreak/>
+                    e-mail: bswiatkowska@mnk.pl<LineBreak/>
+                    </TextBlock>
+                </StackPanel>
+                <Image Grid.Row="1" Grid.Column="1" Source="/AnarisEvo;component/Resources/KCBND_logo.png"></Image>
+                <Image Grid.Row="1" Grid.Column="0" Source="/AnarisEvo;component/Resources/MNK_logo.jpg"></Image>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="0" Grid.Column="2" Margin="2 5 2 5" Header="Tematy pomocy">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="120*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="doelenContentPanel" Orientation="Vertical" Grid.Column="0" >
+                    <Button Content="Baza danych"  Height="30"  Margin="2 5 2 0" Background="White" Command="{Binding ChnagePage}" CommandParameter="1"/>
+                    <Button Content="Temat 2" Height="30"  Margin="2 5 2 0" Background="White" IsEnabled="False"/>
+                    <Button Content="Temat 3" Height="30"  Margin="2 5 2 0" Background="White" IsEnabled="False"/>
+                </StackPanel>
+                <ScrollViewer Grid.Column="2">
+                    <Frame x:Name="frm_tutorial"  Margin="5 5 5 5" Padding="10 10 10 10"  ScrollViewer.VerticalScrollBarVisibility="Auto"  Foreground="Black" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden" />
+                </ScrollViewer>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

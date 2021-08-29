@@ -1,0 +1,24 @@
+﻿<Application x:Class="AnarisEvo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AnarisEvo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Styles/MainWindow.xaml" />
+                <ResourceDictionary Source="Styles/DatabaseManager.xaml" />
+                <ResourceDictionary Source="Styles/AnalysisManager.xaml" />
+                <ResourceDictionary Source="Styles/EvaluationManager.xaml"/>
+                <ResourceDictionary Source="Styles/SettingsManager.xaml" />
+                <ResourceDictionary Source="Styles/CustomButton.xaml" />
+                <ResourceDictionary Source="Styles/DerivedGrid.xaml" />
+                <ResourceDictionary Source="Styles/MenuStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ManagerWindow.xaml"/>
+                <ResourceDictionary Source="Styles/CloseOnlyWindow.xaml"/>
+                <ResourceDictionary Source="Styles/CloseOnlyAuthor.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,298 @@
+namespace ANARIS
+{
+    partial class AnarisProject
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnarisProject));
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lista = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.saveFD = new System.Windows.Forms.SaveFileDialog();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.loadDBMenu = new System.Windows.Forms.ToolStripButton();
+            this.saveDBMenu = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.riskManBtn = new System.Windows.Forms.ToolStripButton();
+            this.valueManBtn = new System.Windows.Forms.ToolStripButton();
+            this.catManBtn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.scenarioComBox = new System.Windows.Forms.ToolStripComboBox();
+            this.rowContext = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.splitRowMnu = new System.Windows.Forms.ToolStripMenuItem();
+            this.rmvRowMnu = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
+            this.rowContext.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // tabControl
+            // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Location = new System.Drawing.Point(3, 46);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(967, 342);
+            this.tabControl.TabIndex = 0;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(959, 316);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeight = 47;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Select,
+            this.Item,
+            this.Lista,
+            this.Number});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(953, 310);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnAdded);
+            this.dataGridView1.ColumnHeaderCellChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnHeaderCellChanged);
+            this.dataGridView1.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnWidthChanged);
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
+            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            this.dataGridView1.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridView1_RowsRemoved);
+            this.dataGridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseDown);
+            // 
+            // Select
+            // 
+            this.Select.HeaderText = "Zaznacz";
+            this.Select.Name = "Select";
+            this.Select.Width = 60;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Grupa";
+            this.Item.Name = "Item";
+            this.Item.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Item.Width = 300;
+            // 
+            // Lista
+            // 
+            this.Lista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Lista.HeaderText = "Wartoœæ";
+            this.Lista.Name = "Lista";
+            // 
+            // Number
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Number.HeaderText = "Iloœæ";
+            this.Number.Name = "Number";
+            this.Number.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // openFD
+            // 
+            this.openFD.FileName = "openFileDialog1";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadDBMenu,
+            this.saveDBMenu,
+            this.toolStripSeparator1,
+            this.riskManBtn,
+            this.valueManBtn,
+            this.catManBtn,
+            this.toolStripSeparator2,
+            this.scenarioComBox});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(972, 43);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // loadDBMenu
+            // 
+            this.loadDBMenu.AutoSize = false;
+            this.loadDBMenu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.loadDBMenu.Image = ((System.Drawing.Image)(resources.GetObject("loadDBMenu.Image")));
+            this.loadDBMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.loadDBMenu.Name = "loadDBMenu";
+            this.loadDBMenu.Size = new System.Drawing.Size(40, 40);
+            this.loadDBMenu.Text = "Wczytaj bazê danych";
+            this.loadDBMenu.Click += new System.EventHandler(this.loadDBMenu_Click);
+            // 
+            // saveDBMenu
+            // 
+            this.saveDBMenu.AutoSize = false;
+            this.saveDBMenu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveDBMenu.Image = ((System.Drawing.Image)(resources.GetObject("saveDBMenu.Image")));
+            this.saveDBMenu.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveDBMenu.Name = "saveDBMenu";
+            this.saveDBMenu.Size = new System.Drawing.Size(40, 40);
+            this.saveDBMenu.Text = "Zapisz bazê danych";
+            this.saveDBMenu.Click += new System.EventHandler(this.saveDBMenu_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 43);
+            // 
+            // riskManBtn
+            // 
+            this.riskManBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.riskManBtn.Image = ((System.Drawing.Image)(resources.GetObject("riskManBtn.Image")));
+            this.riskManBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.riskManBtn.Name = "riskManBtn";
+            this.riskManBtn.Size = new System.Drawing.Size(39, 40);
+            this.riskManBtn.Text = "toolStripButton1";
+            this.riskManBtn.ToolTipText = "Zarz¹dzaj czynnikami";
+            // 
+            // valueManBtn
+            // 
+            this.valueManBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.valueManBtn.Image = ((System.Drawing.Image)(resources.GetObject("valueManBtn.Image")));
+            this.valueManBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.valueManBtn.Name = "valueManBtn";
+            this.valueManBtn.Size = new System.Drawing.Size(39, 40);
+            this.valueManBtn.Text = "toolStripButton1";
+            this.valueManBtn.ToolTipText = "Zarz¹dzaj wartoœciami";
+            // 
+            // catManBtn
+            // 
+            this.catManBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.catManBtn.Image = ((System.Drawing.Image)(resources.GetObject("catManBtn.Image")));
+            this.catManBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.catManBtn.Name = "catManBtn";
+            this.catManBtn.Size = new System.Drawing.Size(39, 40);
+            this.catManBtn.Text = "toolStripButton1";
+            this.catManBtn.ToolTipText = "Zarz¹dzaj kategoriami";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 43);
+            // 
+            // scenarioComBox
+            // 
+            this.scenarioComBox.Name = "scenarioComBox";
+            this.scenarioComBox.Size = new System.Drawing.Size(200, 43);
+            this.scenarioComBox.Text = "Scenariusze";
+            this.scenarioComBox.SelectedIndexChanged += new System.EventHandler(this.scenarioComBox_SelectedIndexChanged);
+            // 
+            // rowContext
+            // 
+            this.rowContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.splitRowMnu,
+            this.rmvRowMnu});
+            this.rowContext.Name = "rowContext";
+            this.rowContext.Size = new System.Drawing.Size(148, 48);
+            // 
+            // splitRowMnu
+            // 
+            this.splitRowMnu.Name = "splitRowMnu";
+            this.splitRowMnu.Size = new System.Drawing.Size(147, 22);
+            this.splitRowMnu.Text = "Podziel wiersz";
+            this.splitRowMnu.Click += new System.EventHandler(this.splitRowMnu_Click);
+            // 
+            // rmvRowMnu
+            // 
+            this.rmvRowMnu.Name = "rmvRowMnu";
+            this.rmvRowMnu.Size = new System.Drawing.Size(147, 22);
+            this.rmvRowMnu.Text = "Usuñ wiersz";
+            this.rmvRowMnu.Click += new System.EventHandler(this.rmvRowMnu_Click);
+            // 
+            // AnarisProject
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(972, 391);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.tabControl);
+            this.Name = "AnarisProject";
+            this.Text = "AnarisProject";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AnarisProject_FormClosed);
+            this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.rowContext.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.OpenFileDialog openFD;
+        private System.Windows.Forms.SaveFileDialog saveFD;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton loadDBMenu;
+        private System.Windows.Forms.ToolStripButton saveDBMenu;
+        private System.Windows.Forms.ToolStripComboBox scenarioComBox;
+        private System.Windows.Forms.TabPage tabPage1;
+        public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip rowContext;
+        private System.Windows.Forms.ToolStripMenuItem splitRowMnu;
+        private System.Windows.Forms.ToolStripMenuItem rmvRowMnu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Lista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton riskManBtn;
+        private System.Windows.Forms.ToolStripButton valueManBtn;
+        private System.Windows.Forms.ToolStripButton catManBtn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+    }
+}

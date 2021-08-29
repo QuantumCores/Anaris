@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FF4A2D63-5569-447A-BA4F-BD61F7A11F7C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnarisDLL</RootNamespace>
+    <AssemblyName>AnarisDLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.10\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\AnarisGrid\ObservableGrid.cs" />
+    <Compile Include="BLL\Anaris\Anaris.cs" />
+    <Compile Include="BLL\Anaris\Author.cs" />
+    <Compile Include="BLL\Anaris\Organization.cs" />
+    <Compile Include="BLL\Anaris\ProjectProperties.cs" />
+    <Compile Include="BLL\Anaris\RiskAnalysis.cs" />
+    <Compile Include="BLL\Anaris\RiskDgvList.cs" />
+    <Compile Include="BLL\Category\Category.cs" />
+    <Compile Include="BLL\Category\DataBaseCategories.cs" />
+    <Compile Include="BLL\Category\SubCategory.cs" />
+    <Compile Include="BLL\Database\Database.cs" />
+    <Compile Include="BLL\AnarisGrid\Dgv.cs" />
+    <Compile Include="BLL\AnarisGrid\DgvCell.cs" />
+    <Compile Include="BLL\AnarisGrid\DgvColumn.cs" />
+    <Compile Include="BLL\AnarisGrid\DgvRow.cs" />
+    <Compile Include="BLL\Enums.cs" />
+    <Compile Include="BLL\Helpers\ExtensionMethods.cs" />
+    <Compile Include="BLL\Helpers\NumberFormatConverter.cs" />
+    <Compile Include="BLL\Helpers\PieChartHelper.cs" />
+    <Compile Include="BLL\Helpers\RandomNameGenerator.cs" />
+    <Compile Include="BLL\Helpers\ViewModelBase.cs" />
+    <Compile Include="BLL\LoadAnaris\LoadAnaris_v_1_7.cs" />
+    <Compile Include="BLL\LoadAnaris\LoadAnaris_v_2_0.cs" />
+    <Compile Include="BLL\LoadAnaris\LoadProject.cs" />
+    <Compile Include="BLL\LoadDataBase\LoadDataBase.cs" />
+    <Compile Include="BLL\LoadDataBase\LoadDataBase_v_1_6.cs" />
+    <Compile Include="BLL\LoadDataBase\LoadDataBase_v_1_7.cs" />
+    <Compile Include="BLL\LoadDataBase\LoadDataBase_v_2_0.cs" />
+    <Compile Include="BLL\Report\ARTemplate.cs" />
+    <Compile Include="BLL\Report\RColor.cs" />
+    <Compile Include="BLL\Report\ReportEnums.cs" />
+    <Compile Include="BLL\Report\ReportFonts.cs" />
+    <Compile Include="BLL\Report\ReportSettings.cs" />
+    <Compile Include="BLL\Report\ReportToPDF.cs" />
+    <Compile Include="BLL\Report\RFont.cs" />
+    <Compile Include="BLL\Report\simplePDF.cs" />
+    <Compile Include="BLL\Report\XmlNodeX.cs" />
+    <Compile Include="BLL\Risk\ElementaryRisk.cs" />
+    <Compile Include="BLL\Risk\RiskCollection.cs" />
+    <Compile Include="BLL\Risk\SingleRisk.cs" />
+    <Compile Include="BLL\SaveAnaris\SaveProject.cs" />
+    <Compile Include="BLL\SaveDataBase\SaveDataBase.cs" />
+    <Compile Include="BLL\Value\DataBaseValues.cs" />
+    <Compile Include="BLL\Value\SingleValue.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

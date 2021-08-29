@@ -1,0 +1,61 @@
+﻿<Page x:Class="AnarisEvo.Pages.Tutorial.DataBasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AnarisEvo.Pages.Tutorial"
+      mc:Ignorable="d" 
+      d:DesignHeight="1900" d:DesignWidth="400"
+      Title="DataBasePage">
+
+    <Grid>
+        <TextBlock Margin="5 0 0 0" Padding="0 10 0 10" TextWrapping="Wrap" FontSize="14" TextAlignment="Justify" Foreground="Black">
+            Podstawową bazę danych dotyczącą zasobu dziedzictwa będącego przedmiotem analizy ryzyka zaczynamy tworzyć klikając w klawisz nowej bazy danych w oknie 
+            powitalnym, ikonę na wstążce lub wybierając <Bold>„Nowa Baza danych”</Bold> w rozwijanym menu „Plik”. Należy podać nazwę pliku i wskazać miejsce w strukturze 
+            folderów, w którym ma on być umieszczony oraz kliknąć utwórz. W kolumnie „Grupa” bazy danych, która się pojawi należy w kolejnych wierszach wpisywać 
+            nazwy identyfikujące grupy w analizowanym zasobie dziedzictwa. W kolumnie „Liczba” należy natomiast wpisać liczbę obiektów w danej grupie. Jeżeli w danej 
+            grupie są obiekty o różnej wartości należy je wpisać w oddzielnych wierszach i podać liczbę. Program rozpozna, że obiekty o różnej wartości należą do tej 
+            samej grupy jeżeli ich nazwy w kolumnie „Grupa” będą tożsame (dotyczy to również spacji). <LineBreak/><LineBreak/>
+            
+            
+            Uzupełnienie kolumny „Wartość” będzie możliwe po uprzednim określeniu klas wartości w oknie <Bold>„Zarządzaj wartościami”</Bold>, które można otworzyć klikając w ikonę na 
+            wstążce lub wybierając „Zarządzaj wartościami” w rozwijanym menu „Baza danych”. W oknie można dodawać kolejne klasy wartości wraz z opisem, usuwać je i 
+            edytować. Można również dodać ogólny opis. W polu „Wartość” należy wpisać dowolną liczbę ≥1. Jeżeli założeniem jest, że wszystkie obiekty w zasobie 
+            dziedzictwa będącym przedmiotem analizy ryzyka są równej wartości, należy utworzyć w oknie „Zarządzaj wartościami” jedną klasę wartości i w polu wartość 
+            wpisać 1. <LineBreak/><LineBreak/>
+            
+            W bazie danych oprócz domyślnej kolumny „Grupa” użytkownik może dodać dowolną liczbę kolumn pozwalających na wprowadzenie podstawowych informacji o 
+            zasobie będącym przedmiotem analizy i jego podziale na różne kategorie merytoryczne np. działy, poddziały, czy organizacyjnym np. budynki, galerie, 
+            magazyny etc. Do dodawania kolumn i tworzenia drzewa kategorii służy okno <Bold>„Zarządzaj kategoriami”</Bold>, które można otworzyć klikając w ikonę na wstążce lub 
+            wybierając „Zarządzaj kategoriami” w rozwijanym menu „Baza danych”. W oknie można dodać nowe kategorie lub podkategorie wraz z opisem, usuwać je i 
+            edytować. Dodanie nowej kategorii oznacza dodanie nowej kolumny w bazie danych np. kategoria „Miejsce przechowywania”. W polu „Typ” należy wówczas wybrać 
+            „Kategoria”. Do istniejącej kategorii można dodać podkategorie. Należy wówczas w polu „Typ” wybrać „Podkategoria”, a następnie w polu „Dodaj do” wybrać 
+            kategorię, w ramach której występuje dana podkategoria np. w ramach kategorii „Miejsce przechowywania” mogą się znajdować podkategorie „Galeria 1”, 
+            „Galeria 2” oraz „Magazyn”. Można usuwać i edytować kategorie i podkategorie klikając w ich nazwę w drzewie w środkowej części okna. Kategorie i 
+            podkategorie pojawią się w bazie danych, jak również są zmieniane i usuwane po wciśnięciu przycisku „Zastosuj”.<LineBreak/><LineBreak/>
+            
+            Okno <Bold>„Diagram kołowy wartości”</Bold> można otworzyć klikając w ikonę na wstążce lub wybierając „Diagram kołowy wartości” w rozwijanym menu „Baza danych”. 
+            Okno służy do graficznego przedstawienia względnej wartości podkategorii w ramach danej kategorii w formie wykresu kołowego. W polu „Wybierz kategorię” 
+            można wybrać zarówno domyślną kategorię „Grupa”, jak i którąkolwiek z kategorii utworzonych w oknie „Zarządzaj kategoriami”. Po naciśnięciu klawisza 
+            „Wyświetl diagram” program automatycznie oblicza procentowy udział wartości poszczególnych podkategorii w danej kategorii i tworzy diagram kołowy. 
+            Procentowy udział wyświetla się po prawej stronie diagramu. Obraz można zapisać wskazując właściwy folder po kliknięciu „Wybierz ścieżkę”, a następnie 
+            klawisza „Zapisz”.<LineBreak/><LineBreak/>
+            
+            Wszystkie zmiany wprowadzone zarówno w samej bazie, jak i w oknach do zarządzania wartościami i kategoriami należy zapisać przed opuszczeniem programu 
+            klikając w ikonę zapisz lub zapisz jako umieszczone na wstążce lub wybierając „Zapisz bazę danych” w rozwijanym menu „Plik”.  <LineBreak/><LineBreak/>
+            
+            Jeżeli użytkownik stworzył dwie oddzielne bazy danych i chciałby je połączyć może to zrobić korzystając z ikony <Bold>„Scal bazy danych”</Bold> na wstążce lub 
+            wybierając to polecenie w rozwijanym menu „Baza danych”. Scalanie baz danych jest możliwe tylko jeżeli ich struktura jest taka sama, czyli jeśli 
+            zawierają takie same kategorie, podkategorie i wartości. Jeżeli więc między bazami są różnice należy je usunąć dodając odpowiednie kategorie, 
+            podkategorie i wartości. Należy otworzyć okno „Scal bazy danych” w którejkolwiek z dwóch baz i kliknąć „Wybierz”, aby wskazać drugi plik bazy danych. 
+            Istnieją dwie opcje importu. Program może zaimportować wszystkie wiersze lub w przypadku wyboru opcji „Importuj oryginalne wiersze” dodawane będą tylko 
+            te wiersze, w których kombinacja wszystkich podkategorii, wartości i ilości obiektów jest nowa. Jeżeli w importowanym pliku istnieją wiersze o takiej 
+            samej kombinacji podkategorii, wartości i ilości obiektów program ich nie zaimportuje do otwartej bazy danych.<LineBreak/><LineBreak/>
+                    
+            Jeżeli użytkownik dysponuje plikiem analizy ryzyka i chciałby wyeksportować plik bazy danych będący jego częścią może to zrobić klikając w ikonę 
+            <Bold>„Eksportuj bazę danych”</Bold> lub wybierając to polecenie w rozwijanym menu „Baza danych”. Należy podać nazwę wyeksportowanego pliku bazy danych i wskazać 
+            miejsce w strukturze folderów, gdzie ma on być zapisany.
+
+        </TextBlock>
+    </Grid>
+</Page>

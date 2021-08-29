@@ -1,0 +1,132 @@
+﻿<Window x:Class="AnarisEvo.Views.ProjectProperties"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnarisEvo.Views"
+        mc:Ignorable="d"
+        Title="Informacje ogólne" Height="600" Width="900" Style="{StaticResource SettingsManager}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Column="0" Grid.Row="0" Header="Informacje ogólne">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="3*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Nazwa projektu:"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="0"></Label>
+                    <TextBox Text="{Binding Properties.ProjectName, Mode=OneWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0"></TextBox>
+
+                    <Label Content="Ścieżka:"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="1"></Label>
+                    <TextBox Text="{Binding Properties.FilePath, Mode=OneWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1"></TextBox>
+
+                    <Label Content="Utworzony"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="2"></Label>
+                    <TextBox Text="{Binding Properties.CreationTime, Mode=OneWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2"></TextBox>
+
+                    <Label Content="Zmodyfikowany"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="3"></Label>
+                    <TextBox Text="{Binding roperties.ModifiedTime, Mode=OneWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="3"></TextBox>
+
+                    <Label Content="Zakres oceny"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="4"></Label>
+                    <TextBox Text="{Binding roperties.Scope, Mode=TwoWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="4"></TextBox>
+
+                    <Label Content="Instytucja"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="5"></Label>
+
+                    <Label Content="Nazwa"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="6"></Label>
+                    <TextBox Text="{Binding Properties.Organization.Name, Mode=TwoWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="6"></TextBox>
+
+                    <Label Content="Miasto"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="7"></Label>
+                    <TextBox Text="{Binding Properties.Organization.City, Mode=TwoWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="7"></TextBox>
+
+                    <Label Content="Ulica"  VerticalAlignment="Center" Grid.Column="0" Grid.Row="8"></Label>
+                    <TextBox Text="{Binding Properties.Organization.Street, Mode=TwoWay}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="8"></TextBox>
+
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Zespół oceniający ryzyko" Grid.Column="0" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding RiskTeam}" SelectedItem="{Binding SelectedRiskTeam}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding FirstName}" Header="Imię" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding LastName}" Header="Nazwisko" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding WorkPhone}" Header="Telefon" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Usuń" Grid.Column="0" Grid.Row="1" Margin="3" Command="{Binding RemoveRiskTeamCommand}"/>
+                    <Button Content="Dodaj" Grid.Column="1" Grid.Row="1" Margin="3" Command="{Binding ShowAddOtherViewCommand}"/>
+                    <Button Content="Edytuj" Grid.Column="2" Grid.Row="1" Margin="3" Command="{Binding ShowEditOtherViewCommand}"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Column="1"  Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Autorzy raportu" Grid.Column="0" Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Authors}" SelectedItem="{Binding SelectedAuthor}"  AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding FirstName}" Header="Imię" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding LastName}" Header="Nazwisko" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="*"/>
+                            <DataGridTextColumn Binding="{Binding WorkPhone}" Header="Telefon" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Usuń" Grid.Column="0" Grid.Row="1" Margin="3" Command="{Binding RemoveAuthorCommand}"/>
+                    <Button Content="Dodaj" Grid.Column="1" Grid.Row="1" Margin="3" Command="{Binding ShowAddAuthorViewCommand}"/>
+                    <Button Content="Edytuj" Grid.Column="2" Grid.Row="1" Margin="3" Command="{Binding ShowEditAuthorViewCommand}"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Wstęp do raportu" Grid.Column="0" Grid.Row="1">
+                <TextBox TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" Text="{Binding Properties.ReportIntro, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </GroupBox>
+        </Grid>
+        <StackPanel Grid.Row="1"  Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button  Content="Anuluj" Grid.Row="1" Grid.Column="1" Width="100" Height="35" Margin="5 0 5 0" Command="{Binding CancelCommand}"/>
+            <Button  Content="Zapisz" Grid.Row="1" Grid.Column="1" Width="100" Height="35" Margin="5 0 5 0" Style="{StaticResource SettingsButton}" Command="{Binding ApplyCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
